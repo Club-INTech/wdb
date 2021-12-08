@@ -1,0 +1,22 @@
+name: PyCodeStyle
+
+on:
+  push:
+    branches:
+        - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Python Style Checker
+      uses: konciergeMD/github-action-pycodestyle@main
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PYCODESTYLE_OPTS: '--max-line-length=120'
